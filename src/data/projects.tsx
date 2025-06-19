@@ -287,7 +287,7 @@ const projects: Project[] = [
         PROJECT_SKILLS.js,
         PROJECT_SKILLS.vue,
       ],
-     
+     backend: [],
     },
     get content(): JSX.Element {
       return (
@@ -314,7 +314,7 @@ const projects: Project[] = [
         PROJECT_SKILLS.js,
         
       ],
-      
+      backend: [],
     },
     get content() {
       return (
