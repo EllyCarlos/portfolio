@@ -1,74 +1,166 @@
-# 🚀 My Portfolio Website
+<div align="center">
 
-Welcome to the repository for my personal portfolio website! This is where I showcase my skills, projects, and a bit of my personality through jaw-dropping 3D animations, slick interactions, and fluid motion. If you're into creative web design, you're in the right place.
+# ✦ Elly Carlos — Portfolio
 
-![Portfolio Preview](https://github.com/EllyCarlos/Portfolio/blob/main/public/assets/projects-screenshots/portfolio/landing.png?raw=true)
+**Full-Stack Developer · Nairobi, Kenya**
 
-## 🔥 Features
+[![Live Site](https://img.shields.io/badge/Live%20Site-ellycarlos.vercel.app-1A56A0?style=for-the-badge&logo=vercel&logoColor=white)](https://ellycarlos.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-96.9%25-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-- **3D Animations**: Custom-made interactive keyboard using Spline with skills as keycaps that reveal titles and descriptions on hover.
-- **Slick Interactions**: Powered by GSAP and Framer Motion for smooth animations on scroll, hover, and element reveal.
-- **Space Theme**: Particles on a dark background to simulate a cosmic environment, making the experience out of this world.
-- **Responsive Design**: Fully responsive across all devices to ensure the best user experience.
-- **Innovative Web Design**: Combining creativity with functionality to push the boundaries of modern web design.
+A personal portfolio website featuring custom 3D animations, immersive scroll interactions, and a space-themed UI — built to stand out.
 
-## 🛠️ Tech Stack
+![Portfolio Landing](public/assets/projects-screenshots/portfolio/landing.png)
 
-- **Frontend**: Next.js, React, Tailwind CSS, Shadcn, Aceternity UI
-- **Animations**: GSAP, Framer Motion, Spline Runtime
-- **Misc**: Resend, Socketio, Zod
+</div>
 
-## 🚀 Getting Started
+---
+
+## ✦ Live Demo
+
+🌐 **[ellycarlos.vercel.app](https://ellycarlos.vercel.app)**
+
+---
+
+## ✦ Features
+
+- **3D Interactive Keyboard** — Built with Spline; each keycap represents a skill and reveals details on hover
+- **Scroll & Reveal Animations** — Powered by GSAP and Framer Motion for fluid, cinematic transitions
+- **Space Theme** — Particle-based cosmic background that brings the page to life
+- **Fully Responsive** — Optimised across mobile, tablet, and desktop
+- **Contact Form** — Email delivery powered by Resend with Zod schema validation
+- **Type-Safe Codebase** — 96.9% TypeScript for a robust, maintainable architecture
+
+---
+
+## ✦ Tech Stack
+
+| Layer | Technologies |
+|---|---|
+| **Framework** | Next.js 15, React |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS, SCSS, Shadcn UI, Aceternity UI |
+| **Animations** | GSAP, Framer Motion, Spline Runtime |
+| **Email** | Resend |
+| **Validation** | Zod |
+| **Deployment** | Vercel |
+
+---
+
+## ✦ Projects Showcased
+
+### NexusChat — Real-Time Messaging Platform
+> Next.js · Node.js · TypeScript · Socket.IO · Prisma · Firebase
+
+A full-featured messaging app with one-on-one and group chat, voice notes, file sharing, and calling capabilities.
+
+---
+
+### E-Commerce MERN Platform
+> MongoDB · Express.js · React.js · Node.js · Redux Toolkit · Material-UI
+
+A complete shopping platform with JWT authentication, admin dashboard, product reviews, wishlists, and order tracking.
+
+---
+
+## ✦ Getting Started
 
 ### Prerequisites
 
-- Node.js (v14+)
+- Node.js v14+
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+```bash
+# 1. Clone the repository
+git clone https://github.com/EllyCarlos/Portfolio.git
 
-    ```bash
-    git clone https://github.com/EllyCarlos/Portfolio.git
-    ```
+# 2. Navigate into the project
+cd Portfolio
 
-2. Navigate to the project directory:
+# 3. Install dependencies
+yarn install
 
-    ```bash
-    cd Portfolio
-    ```
+# 4. Start the development server
+yarn dev
+```
 
-3. Install dependencies:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+### Environment Variables
 
-4. Run the development server:
+Create a `.env.local` file in the root directory and add the following:
 
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+```env
+RESEND_API_KEY=your_resend_api_key
+```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the magic!
+---
 
-## 🚀 Deployment
+## ✦ Deployment
 
-This site is deployed on Vercel. For your own deployment, follow these steps:
+This site is deployed on **Vercel**. To deploy your own fork:
 
-1. Push your code to a GitHub repository.
-2. Connect your repository to Vercel.
-3. Vercel will handle the deployment process.
+1. Push your code to a GitHub repository
+2. Import the repository on [vercel.com](https://vercel.com)
+3. Add your environment variables in the Vercel dashboard
+4. Deploy — Vercel handles the rest
 
-## 🤝 Contributing
+---
 
-If you'd like to contribute or suggest improvements, feel free to open an issue or submit a pull request. All contributions are welcome!
+## ✦ Project Structure
 
-## 📄 License
+```
+portfolio/
+├── public/
+│   └── assets/
+│       └── projects-screenshots/   # Project preview images
+├── src/
+│   ├── app/                        # Next.js app router pages
+│   ├── components/                 # Reusable UI components
+│   └── lib/                        # Utility functions & config
+├── tailwind.config.ts
+├── next.config.mjs
+└── tsconfig.json
+```
+
+---
+
+## ✦ Contributing
+
+Suggestions and improvements are always welcome.
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-idea`
+3. Commit your changes: `git commit -m 'Add: your idea'`
+4. Push to the branch: `git push origin feature/your-idea`
+5. Open a Pull Request
+
+---
+
+## ✦ Connect
+
+| Platform | Link |
+|---|---|
+| 🌐 Portfolio | [ellycarlos.vercel.app](https://ellycarlos.vercel.app) |
+| 💼 LinkedIn | [linkedin.com/in/elly-carlos](https://www.linkedin.com/in/elly-carlos) |
+| 🐙 GitHub | [github.com/EllyCarlos](https://github.com/EllyCarlos) |
+| 📧 Email | [ellycarlos97@gmail.com](mailto:ellycarlos97@gmail.com) |
+
+---
+
+## ✦ License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+Made with ☕ in Nairobi, Kenya
+
+⭐ If you like what you see, drop a star — it helps more than you think!
+
+</div>
