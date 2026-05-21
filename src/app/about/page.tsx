@@ -43,8 +43,8 @@ import { TbTerminal2 } from "react-icons/tb";
 const CONTACT_LINKS = [
   {
     name: "Email",
-    content: "ellycarlos97@gmail.com",
-    href: "mailto:ellycarlos97@gmail.com",
+    content: "ellycarlos7915@gmail.com",
+    href: "mailto:ellycarlos7915@gmail.com",
     icon: <FaEnvelope height={"50px"} />,
   },
   {
@@ -55,13 +55,13 @@ const CONTACT_LINKS = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in//",
+    href: "https://www.linkedin.com/in/elly-carlos/",
     content: "/Elly Carlos",
     icon: <FaLinkedin height={"50px"} />,
   },
   {
     name: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/EllyCarlos",
     content: "/Elly Carlos",
     icon: <FaGithub height={"50px"} />,
   },
