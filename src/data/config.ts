@@ -23,17 +23,17 @@ const config = {
   ],
   author: "Elly Carlos",
   email: "ellycarlos97@gmail.com",
-  site: "",
+  site: "ellycarlos.vercel.app",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "",
-    linkedin: "",
-    instagram: "",
+    twitter: "https://x.com/elly_carlos254",
+    linkedin: "https://www.linkedin.com/in/elly-carlos",
+    instagram: "https://www.instagram.com/elly_carlos",
     facebook: "",
-    github: "",
+    github: "github.com/EllyCarlos",
   },
 };
 export { config };
