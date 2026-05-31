@@ -33,7 +33,7 @@ const config = {
     linkedin: "https://www.linkedin.com/in/elly-carlos",
     instagram: "https://www.instagram.com/elly_carlos",
     facebook: "",
-    github: "github.com/EllyCarlos",
+    github: "https://www.github.com/EllyCarlos",
   },
 };
 export { config };
