@@ -229,7 +229,7 @@ using use = useUsing("use")`,
     name: "vercel",
     label: "Vercel",
     shortDescription:
-      "The triangle compony, helps you deploy and go touch grass! 🚀🌿",
+      "The triangle company, helps you deploy and go touch grass! 🚀🌿",
     color: "#6cc24a",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
   },
