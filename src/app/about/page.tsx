@@ -61,7 +61,7 @@ const CONTACT_LINKS = [
   },
   {
     name: "GitHub",
-    href: "https://github.com/EllyCarlos",
+    href: "https://www.github.com/EllyCarlos",
     content: "/Elly Carlos",
     icon: <FaGithub height={"50px"} />,
   },
