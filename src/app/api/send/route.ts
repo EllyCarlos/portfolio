@@ -1,5 +1,4 @@
 import { EmailTemplate } from "@/components/email-template";
-import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";
 
@@ -23,9 +22,10 @@ export async function POST(req: Request) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
+    const resendToEmail = process.env.RESEND_TO_EMAIL;
 
-    if (!resendApiKey) {
-      console.error("RESEND_API_KEY is not configured");
+    if (!resendApiKey || !resendToEmail) {
+      console.error("Email service is not configured");
       return Response.json(
         { error: "Email service not configured" },
         { status: 500 }
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     const resend = new Resend(resendApiKey);
     const { error: resendError } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
-      to: [config.email],
+      to: [resendToEmail],
       subject: "Contact me from portfolio",
       react: EmailTemplate({
         fullName: zodData.fullName,
