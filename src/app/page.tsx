@@ -18,8 +18,8 @@ function MainPage() {
             <AnimatedBackground />
           </div>
           <HeroSection />
+          <ProjectsSection />
           <SkillsSection />
-          <ProjectsSection /> {/* Commented component */}
           <ContactSection />
         </main>
       </SmoothScroll>

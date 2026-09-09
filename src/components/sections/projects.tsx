@@ -1,155 +1,204 @@
-"use client";
-import Image from "next/image";
-import React from "react";
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalTrigger,
-} from "../ui/animated-modal";
-import { FloatingDock } from "../ui/floating-dock";
-import Link from "next/link";
-
-import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
+import { ArrowUpRight, Github } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-const ProjectsSection = () => {
+const secondaryProjectIds = ["portfolio", "Todo List", "Weather App"];
+
+const getTechnologyNames = (project: Project) =>
+  Array.from(
+    new Set(
+      [...project.skills.frontend, ...project.skills.backend].map(
+        (skill) => skill.title
+      )
+    )
+  );
+
+const getProjectImageAlt = (project: Project) => {
+  if (project.id === "NexusChat") {
+    return "NexusChat login screen with Google and email authentication options";
+  }
+
+  return `${project.title} ${project.category.toLowerCase()} application interface`;
+};
+
+const ProjectActions = ({ project }: { project: Project }) => {
+  if (!project.live && !project.github) return null;
+
   return (
-    <section id="projects" className="max-w-7xl mx-auto md:h-[130vh]">
-      <Link href={"#projects"}>
-        <h2
+    <div className="flex flex-wrap gap-3">
+      {project.live && (
+        <Link
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn(
-            "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-16",
-            "bg-gradient-to-b from-black/80 to-black/50",
-            "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50 mb-32"
+            "inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-brand px-4 py-2.5",
+            "text-sm font-semibold text-neutral-950 transition-colors duration-200 hover:bg-brand/90",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           )}
         >
-          Projects
-        </h2>
-      </Link>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        {projects.map((project) => (
-          <Modall key={project.id} project={project} />
-        ))}
+          Live Project
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      )}
+      {project.github && (
+        <Link
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-border bg-background/70 px-4 py-2.5",
+            "text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-accent",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          )}
+        >
+          <Github className="h-4 w-4" aria-hidden="true" />
+          GitHub
+        </Link>
+      )}
+    </div>
+  );
+};
+
+const TechnologyList = ({
+  technologies,
+  label,
+}: {
+  technologies: string[];
+  label: string;
+}) => (
+  <div>
+    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      {label}
+    </p>
+    <ul className="flex flex-wrap gap-2">
+      {technologies.map((technology) => (
+        <li
+          key={technology}
+          className="rounded-full border border-border bg-muted/60 px-3 py-1.5 text-xs font-medium text-muted-foreground"
+        >
+          {technology}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const FeaturedProject = ({ project }: { project: Project }) => (
+  <article className="grid overflow-hidden rounded-2xl border border-border bg-card/95 shadow-xl shadow-black/5 dark:shadow-black/20 lg:grid-cols-[1.15fr_0.85fr]">
+    <div className="flex items-center bg-black p-2 sm:p-3 lg:p-4">
+      <Image
+        src={project.src}
+        alt={getProjectImageAlt(project)}
+        width={1275}
+        height={635}
+        sizes="(min-width: 1024px) 58vw, 100vw"
+        className="h-auto w-full rounded-lg border border-white/10"
+      />
+    </div>
+
+    <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
+        Featured project · {project.category}
+      </p>
+      <h3 className="mt-4 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+        {project.title}
+      </h3>
+      <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+        {project.summary}
+      </p>
+
+      <div className="mt-7 space-y-5">
+        <TechnologyList
+          label="Frontend"
+          technologies={project.skills.frontend.map((skill) => skill.title)}
+        />
+        <TechnologyList
+          label="Backend"
+          technologies={project.skills.backend.map((skill) => skill.title)}
+        />
+      </div>
+
+      <div className="mt-8">
+        <ProjectActions project={project} />
+      </div>
+    </div>
+  </article>
+);
+
+const ProjectCard = ({ project }: { project: Project }) => (
+  <article className="flex min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-card/90">
+    <div className="overflow-hidden border-b border-border bg-black">
+      <Image
+        src={project.src}
+        alt={getProjectImageAlt(project)}
+        width={900}
+        height={600}
+        sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
+        className="aspect-[16/9] h-auto w-full object-cover object-top"
+      />
+    </div>
+
+    <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        {project.category}
+      </p>
+      <h3 className="mt-3 font-display text-xl text-foreground sm:text-2xl">
+        {project.title}
+      </h3>
+      <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+        {project.summary}
+      </p>
+
+      <div className="mt-6">
+        <TechnologyList
+          label="Built with"
+          technologies={getTechnologyNames(project)}
+        />
+      </div>
+
+      <div className="mt-7">
+        <ProjectActions project={project} />
+      </div>
+    </div>
+  </article>
+);
+
+const ProjectsSection = () => {
+  const featuredProject = projects.find((project) => project.id === "NexusChat");
+  const secondaryProjects = secondaryProjectIds.flatMap((id) => {
+    const project = projects.find((item) => item.id === id);
+    return project ? [project] : [];
+  });
+
+  return (
+    <section id="projects" className="relative z-10">
+      <div className="container py-section">
+        <div className="mb-10 max-w-2xl sm:mb-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand">
+            Portfolio
+          </p>
+          <h2 className="mt-3 font-display text-4xl tracking-tight text-foreground sm:text-5xl">
+            Selected Work
+          </h2>
+          <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+            A focused selection of web products built across interfaces, APIs,
+            databases, and real-time systems.
+          </p>
+        </div>
+
+        {featuredProject && <FeaturedProject project={featuredProject} />}
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {secondaryProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
-const Modall = ({ project }: { project: Project }) => {
-  return (
-    <div className="flex items-center justify-center">
-      <Modal>
-        <ModalTrigger className="bg-transparent flex justify-center group/modal-btn">
-          <div
-            className="relative w-[400px] h-auto rounded-lg overflow-hidden"
-            style={{ aspectRatio: "3/2" }}
-          >
-            <Image
-              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
-              src={project.src}
-              alt={project.title}
-              width={300}
-              height={300}
-            />
-            <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none">
-              <div className="flex flex-col h-full items-start justify-end p-6">
-                <div className="text-lg text-left">{project.title}</div>
-                <div className="text-xs bg-white text-black rounded-lg w-fit px-2">
-                  {project.category}
-                </div>
-              </div>
-            </div>
-          </div>
-        </ModalTrigger>
-        <ModalBody className="md:max-w-4xl md:max-h-[80%] overflow-auto">
-          <SmoothScroll isInsideModal={true}>
-            <ModalContent>
-              <ProjectContents project={project} />
-            </ModalContent>
-          </SmoothScroll>
-          <ModalFooter className="gap-4">
-            <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
-              Cancel
-            </button>
-            {project.live && (
-              <Link
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonVariants({
-                  variant: "default",
-                  size: "sm",
-                  className: "w-28",
-                })}
-              >
-                Visit
-              </Link>
-            )}
-          </ModalFooter>
-        </ModalBody>
-      </Modal>
-    </div>
-  );
-};
-export default ProjectsSection;
 
-const ProjectContents = ({ project }: { project: Project }) => {
-  return (
-    <>
-      <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
-        {project.title}
-      </h4>
-      <div className="flex flex-col md:flex-row md:justify-evenly max-w-screen overflow-hidden md:overflow-visible">
-        <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
-          <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
-            Frontend
-          </p>
-          {project.skills.frontend?.length > 0 && (
-            <FloatingDock items={project.skills.frontend} />
-          )}
-        </div>
-        {project.skills.backend?.length > 0 && (
-          <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
-            <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
-              Backend
-            </p>
-            <FloatingDock items={project.skills.backend} />
-          </div>
-        )}
-      </div>
-      {/* <div className="flex justify-center items-center">
-        {project.screenshots.map((image, idx) => (
-          <motion.div
-            key={"images" + idx}
-            style={{
-              rotate: Math.random() * 20 - 10,
-            }}
-            whileHover={{
-              scale: 1.1,
-              rotate: 0,
-              zIndex: 100,
-            }}
-            whileTap={{
-              scale: 1.1,
-              rotate: 0,
-              zIndex: 100,
-            }}
-            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
-          >
-            <Image
-              src={`${project.src.split("1.png")[0]}${image}`}
-              alt="screenshots"
-              width="500"
-              height="500"
-              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
-            />
-          </motion.div>
-        ))}
-      </div> */}
-      {project.content}
-    </>
-  );
-};
+export default ProjectsSection;

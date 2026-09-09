@@ -187,6 +187,7 @@ export type Project = {
   category: string;
   title: string;
   src: string;
+  summary: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
   content: ReactNode;
@@ -200,6 +201,8 @@ const projects: Project[] = [
     category: "Real-Time Messaging",
     title: "NexusChat",
     src: "/assets/projects-screenshots/nexuschat/1.png",
+    summary:
+      "A full-stack, real-time messaging application supporting private and group conversations, media sharing, voice notes, calls, polls, and push notifications.",
     screenshots: ["1.png"],
     live: "https://nexuswebapp.vercel.app",
     github: "https://github.com/EllyCarlos/NexusChat",
@@ -241,6 +244,8 @@ const projects: Project[] = [
     category: "E-Commerce",
     title: "MERN Shop",
     src: "/assets/projects-screenshots/mernshop/1.png",
+    summary:
+      "A full-stack e-commerce application with customer shopping flows and an administration interface.",
     screenshots: ["1.png"],
     skills: {
       frontend: [
@@ -276,6 +281,8 @@ const projects: Project[] = [
     category: "Tool",
     title: "Todo List",
     src: "/assets/projects-screenshots/todolist/1.png",
+    summary:
+      "A focused task-management application for creating, organizing, and completing everyday tasks.",
     screenshots: ["1.png"],
     live: "https://elly-to-do-list.netlify.app/",
     skills: {
@@ -299,6 +306,8 @@ const projects: Project[] = [
     category: "Weather",
     title: "Weather App",
     src: "/assets/projects-screenshots/WeatherApp/1.png",
+    summary:
+      "An interactive application for checking current weather conditions in a clear, responsive interface.",
     screenshots: ["1.png"],
     live: "https://weathervanillajsapp.netlify.app/",
     skills: {
@@ -324,6 +333,8 @@ const projects: Project[] = [
     category: "Portfolio",
     title: "My Portfolio",
     src: "/assets/projects-screenshots/portfolio/landing.png",
+    summary:
+      "A personal portfolio combining full-stack project work with an interactive, space-themed interface.",
     screenshots: ["landing.png", "skills.png", "navbar.png"],
     skills: {
       frontend: [
