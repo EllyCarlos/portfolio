@@ -450,6 +450,46 @@ const AnimatedBackground = () => {
     });
     gsap.timeline({
       scrollTrigger: {
+        trigger: "#about",
+        start: "top 40%",
+        end: "bottom bottom",
+        scrub: true,
+        // markers: true,
+        onEnter: () => {
+          setActiveSection("about");
+          gsap.to(kbd.scale, {
+            ...keyboardStates("about").scale,
+            duration: 1,
+          });
+          gsap.to(kbd.position, {
+            ...keyboardStates("about").position,
+            duration: 1,
+          });
+          gsap.to(kbd.rotation, {
+            ...keyboardStates("about").rotation,
+            duration: 1,
+          });
+        },
+        onLeaveBack: () => {
+          setActiveSection("skills");
+          gsap.to(kbd.scale, {
+            ...keyboardStates("skills").scale,
+            duration: 1,
+          });
+          gsap.to(kbd.position, {
+            ...keyboardStates("skills").position,
+            duration: 1,
+          });
+          gsap.to(kbd.rotation, {
+            ...keyboardStates("skills").rotation,
+            duration: 1,
+          });
+          // gsap.to(kbd.rotation, { x: 0, duration: 1 });
+        },
+      },
+    });
+    gsap.timeline({
+      scrollTrigger: {
         trigger: "#contact",
         start: "top 30%",
         end: "bottom bottom",
@@ -471,17 +511,17 @@ const AnimatedBackground = () => {
           });
         },
         onLeaveBack: () => {
-          setActiveSection("skills");
+          setActiveSection("about");
           gsap.to(kbd.scale, {
-            ...keyboardStates("skills").scale,
+            ...keyboardStates("about").scale,
             duration: 1,
           });
           gsap.to(kbd.position, {
-            ...keyboardStates("skills").position,
+            ...keyboardStates("about").position,
             duration: 1,
           });
           gsap.to(kbd.rotation, {
-            ...keyboardStates("skills").rotation,
+            ...keyboardStates("about").rotation,
             duration: 1,
           });
           // gsap.to(kbd.rotation, { x: 0, duration: 1 });
