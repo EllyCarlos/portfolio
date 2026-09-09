@@ -3,9 +3,9 @@ import { Resend } from "resend";
 import { z } from "zod";
 
 const Email = z.object({
-  fullName: z.string().min(2, "Full name is invalid!"),
-  email: z.string().email({ message: "Email is invalid!" }),
-  message: z.string().min(10, "Message is too short!"),
+  fullName: z.string().trim().min(2, "Full name is invalid!"),
+  email: z.string().trim().email({ message: "Email is invalid!" }),
+  message: z.string().trim().min(10, "Message is too short!"),
 });
 
 export async function POST(req: Request) {
@@ -36,6 +36,7 @@ export async function POST(req: Request) {
     const { error: resendError } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: [resendToEmail],
+      replyTo: zodData.email,
       subject: "Contact me from portfolio",
       react: EmailTemplate({
         fullName: zodData.fullName,
