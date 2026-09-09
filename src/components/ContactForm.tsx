@@ -1,5 +1,5 @@
 "use client";
-import { Check, ChevronRight, Loader2 } from "lucide-react";
+import { ChevronRight, Loader2 } from "lucide-react";
 import React from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/ace-input";
@@ -85,13 +85,14 @@ const ContactForm = () => {
     setLoading(false);
   };
   return (
-    <form className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit}>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+    <form className="mt-6 w-full" onSubmit={handleSubmit}>
+      <div className="grid gap-5 sm:grid-cols-2">
         <LabelInputContainer>
           <Label htmlFor="fullname">Full name</Label>
           <Input
             id="fullname"
-            placeholder="Your Name"
+            className="h-11 bg-background text-foreground"
+            placeholder="Your name"
             type="text"
             required
             minLength={2}
@@ -99,10 +100,11 @@ const ContactForm = () => {
             onChange={(e) => setFullName(e.target.value)}
           />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
+        <LabelInputContainer>
+          <Label htmlFor="email">Email address</Label>
           <Input
             id="email"
+            className="h-11 bg-background text-foreground"
             placeholder="you@example.com"
             type="email"
             required
@@ -111,36 +113,37 @@ const ContactForm = () => {
           />
         </LabelInputContainer>
       </div>
-      <div className="grid w-full gap-1.5 mb-4">
-        <Label htmlFor="content">Your Message</Label>
+      <div className="mt-5 grid w-full gap-2">
+        <Label htmlFor="content">Your message</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
+          className="min-h-36 resize-y bg-background text-foreground"
+          placeholder="Tell me about the role, project, or problem you're working on."
           id="content"
           required
           minLength={10}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <p className="text-sm text-muted-foreground">
-          I&apos;ll never share your data with anyone else. Pinky promise!
+        <p className="text-sm leading-6 text-muted-foreground">
+          Your details are only used to respond to your message.
         </p>
       </div>
       <Button
         disabled={loading}
-        className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+        className="mt-6 min-h-11 w-full bg-brand font-semibold text-neutral-950 transition-colors duration-200 hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
         type="submit"
       >
         {loading ? (
           <div className="flex items-center justify-center">
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            <p>Please wait</p>
+            <Loader2 aria-hidden="true" className="mr-2 h-4 w-4 animate-spin" />
+            <span>Sending message</span>
           </div>
         ) : (
           <div className="flex items-center justify-center">
-            Send Message <ChevronRight className="w-4 h-4 ml-4" />
+            Send message
+            <ChevronRight aria-hidden="true" className="ml-2 h-4 w-4" />
           </div>
         )}
-        <BottomGradient />
       </Button>
     </form>
   );
@@ -156,17 +159,8 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    <div className={cn("flex w-full flex-col gap-2", className)}>
       {children}
     </div>
-  );
-};
-
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-brand to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent orange-400 to-transparent" />
-    </>
   );
 };
