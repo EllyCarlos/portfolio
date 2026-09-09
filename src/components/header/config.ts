@@ -8,8 +8,8 @@ const links: Link[] = [
   },
   {
     title: 'About',
-    href: '/#about',
-    thumbnail: '/assets/nav-link-previews/about.png'
+    href: '/about',
+    thumbnail: '/assets/me.jpg'
   },
   {
     title: 'Skills',
@@ -19,7 +19,7 @@ const links: Link[] = [
   {
     title: 'Projects',
     href: '/#projects',
-    thumbnail: '/assets/nav-link-previews/projects.png'
+    thumbnail: '/assets/projects-screenshots/nexuschat/1.png'
   },
   // {
   //   title: 'Skills',
@@ -31,11 +31,6 @@ const links: Link[] = [
   //   href: '/testimonials',
   //   thumbnail: '/assets/nav-link-previews/testimonials.png'
   // },
-  {
-    title: 'Blogs',
-    href: '/blogs',
-    thumbnail: '/assets/nav-link-previews/blog.png',
-  },
   {
     title: 'Contact',
     href: '/#contact',

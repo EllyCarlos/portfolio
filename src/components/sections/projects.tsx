@@ -14,6 +14,7 @@ import Link from "next/link";
 import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "../ui/button";
 
 const ProjectsSection = () => {
   return (
@@ -30,8 +31,8 @@ const ProjectsSection = () => {
         </h2>
       </Link>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {projects.map((project, index) => (
-          <Modall key={project.src} project={project} />
+        {projects.map((project) => (
+          <Modall key={project.id} project={project} />
         ))}
       </div>
     </section>
@@ -73,11 +74,20 @@ const Modall = ({ project }: { project: Project }) => {
             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
               Cancel
             </button>
-            <Link href={project.live} target="_blank">
-              <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+            {project.live && (
+              <Link
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({
+                  variant: "default",
+                  size: "sm",
+                  className: "w-28",
+                })}
+              >
                 Visit
-              </button>
-            </Link>
+              </Link>
+            )}
           </ModalFooter>
         </ModalBody>
       </Modal>

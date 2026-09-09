@@ -1,60 +1,63 @@
 import AceTernityLogo from "@/components/logos/aceternity";
 import SlideShow from "@/components/slide-show";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
-import { ArrowUpRight, ExternalLink, Link2, MoveUpRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { RiNextjsFill, RiNodejsFill, RiReactjsFill } from "react-icons/ri";
 import {
-  SiChakraui,
-  SiDocker,
   SiExpress,
   SiFirebase,
   SiJavascript,
   SiMongodb,
   SiPostgresql,
   SiPrisma,
-  SiPython,
   SiReactquery,
-  SiSanity,
   SiShadcnui,
   SiSocketdotio,
-  SiSupabase,
   SiTailwindcss,
   SiThreedotjs,
   SiTypescript,
   SiVuedotjs,
 } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
+
 const BASE_PATH = "/assets/projects-screenshots";
 
-const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
+const ProjectsLinks = ({ live, repo }: { live?: string; repo?: string }) => {
+  if (!live && !repo) return null;
+
   return (
     <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8">
-      <Link
-        className="font-mono underline flex gap-2"
-        rel="noopener"
-        target="_new"
-        href={live}
-      >
-        <Button variant={"default"} size={"sm"}>
+      {live && (
+        <Link
+          className={buttonVariants({
+            variant: "default",
+            size: "sm",
+            className: "font-mono gap-2",
+          })}
+          rel="noopener noreferrer"
+          target="_blank"
+          href={live}
+        >
           Visit Website
-          <ArrowUpRight className="ml-3 w-5 h-5" />
-        </Button>
-      </Link>
+          <ArrowUpRight className="w-5 h-5" />
+        </Link>
+      )}
       {repo && (
         <Link
-          className="font-mono underline flex gap-2"
-          rel="noopener"
-          target="_new"
+          className={buttonVariants({
+            variant: "default",
+            size: "sm",
+            className: "font-mono gap-2",
+          })}
+          rel="noopener noreferrer"
+          target="_blank"
           href={repo}
         >
-          <Button variant={"default"} size={"sm"}>
-            Github
-            <ArrowUpRight className="ml-3 w-5 h-5" />
-          </Button>
+          GitHub
+          <ArrowUpRight className="w-5 h-5" />
         </Link>
       )}
     </div>
@@ -67,6 +70,7 @@ export type Skill = {
   fg: string;
   icon: ReactNode;
 };
+
 const PROJECT_SKILLS = {
   next: {
     title: "Next.js",
@@ -74,26 +78,14 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <RiNextjsFill />,
   },
-  chakra: {
-    title: "Chakra UI",
-    bg: "black",
-    fg: "white",
-    icon: <SiChakraui />,
-  },
   node: {
     title: "Node.js",
     bg: "black",
     fg: "white",
     icon: <RiNodejsFill />,
   },
-  python: {
-    title: "Python",
-    bg: "black",
-    fg: "white",
-    icon: <SiPython />,
-  },
   prisma: {
-    title: "prisma",
+    title: "Prisma",
     bg: "black",
     fg: "white",
     icon: <SiPrisma />,
@@ -123,38 +115,22 @@ const PROJECT_SKILLS = {
     icon: <SiReactquery />,
   },
   shadcn: {
-    title: "ShanCN UI",
+    title: "shadcn/ui",
     bg: "black",
     fg: "white",
     icon: <SiShadcnui />,
   },
   aceternity: {
-    title: "Aceternity",
+    title: "Aceternity UI",
     bg: "black",
     fg: "white",
     icon: <AceTernityLogo />,
   },
   tailwind: {
-    title: "Tailwind",
+    title: "Tailwind CSS",
     bg: "black",
     fg: "white",
     icon: <SiTailwindcss />,
-  },
-  docker: {
-    title: "Docker",
-    bg: "black",
-    fg: "white",
-    icon: <SiDocker />,
-  },
-  yjs: {
-    title: "Y.js",
-    bg: "black",
-    fg: "white",
-    icon: (
-      <span>
-        <strong>Y</strong>js
-      </span>
-    ),
   },
   firebase: {
     title: "Firebase",
@@ -163,7 +139,7 @@ const PROJECT_SKILLS = {
     icon: <SiFirebase />,
   },
   socketio: {
-    title: "Socket.io",
+    title: "Socket.IO",
     bg: "black",
     fg: "white",
     icon: <SiSocketdotio />,
@@ -187,16 +163,10 @@ const PROJECT_SKILLS = {
     icon: <SiVuedotjs />,
   },
   react: {
-    title: "React.js",
+    title: "React",
     bg: "black",
     fg: "white",
     icon: <RiReactjsFill />,
-  },
-  sanity: {
-    title: "Sanity",
-    bg: "black",
-    fg: "white",
-    icon: <SiSanity />,
   },
   spline: {
     title: "Spline",
@@ -204,25 +174,14 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiThreedotjs />,
   },
-  gsap: {
-    title: "GSAP",
-    bg: "black",
-    fg: "white",
-    icon: "",
-  },
   framerMotion: {
     title: "Framer Motion",
     bg: "black",
     fg: "white",
     icon: <TbBrandFramerMotion />,
   },
-  supabase: {
-    title: "Supabase",
-    bg: "black",
-    fg: "white",
-    icon: <SiSupabase />,
-  },
 };
+
 export type Project = {
   id: string;
   category: string;
@@ -230,20 +189,61 @@ export type Project = {
   src: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
-  content: React.ReactNode | any;
+  content: ReactNode;
   github?: string;
-  live: string;
+  live?: string;
 };
+
 const projects: Project[] = [
   {
-    id: "Mern Shop",
+    id: "NexusChat",
+    category: "Real-Time Messaging",
+    title: "NexusChat",
+    src: "/assets/projects-screenshots/nexuschat/1.png",
+    screenshots: ["1.png"],
+    live: "https://nexuswebapp.vercel.app",
+    github: "https://github.com/EllyCarlos/NexusChat",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.framerMotion,
+        PROJECT_SKILLS.firebase,
+      ],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.express,
+        PROJECT_SKILLS.socketio,
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.prisma,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            NexusChat is a full-stack, real-time messaging application supporting
+            private and group conversations, media sharing, voice notes, calls,
+            polls, and push notifications. It combines a Next.js and TypeScript
+            frontend with a Node.js, Express, and Socket.IO backend backed by
+            PostgreSQL and Prisma, with authentication, account recovery, and
+            authorization controls.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <SlideShow images={[`${BASE_PATH}/nexuschat/1.png`]} />
+        </div>
+      );
+    },
+  },
+  {
+    id: "MERN Shop",
     category: "E-Commerce",
-    title: "Mern Shop",
+    title: "MERN Shop",
     src: "/assets/projects-screenshots/mernshop/1.png",
     screenshots: ["1.png"],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
         PROJECT_SKILLS.react,
         PROJECT_SKILLS.reactQuery,
         PROJECT_SKILLS.js,
@@ -260,44 +260,36 @@ const projects: Project[] = [
     get content() {
       return (
         <div>
-          
           <TypographyP className="font-mono ">
-            🛍️ A comprehensive, full-stack e-commerce web application meticulously
-            crafted with the MERN stack (MongoDB, Express.js, React, Node.js).
-            This platform leverages Redux Toolkit for efficient state management and
-            Material-UI for a sleek, responsive, and intuitive user interface.
-            It's designed to provide a seamless shopping experience for customers and
-             a powerful administration panel for managing the store.
+            A full-stack e-commerce application built with MongoDB, Express,
+            React, and Node.js. It includes customer shopping flows and an
+            administration interface, with Redux Toolkit managing client state
+            and Material UI providing the responsive interface.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          
         </div>
       );
     },
   },
   {
-    id: "ToDoList",
+    id: "Todo List",
     category: "Tool",
-    title: "ToDoList",
+    title: "Todo List",
     src: "/assets/projects-screenshots/todolist/1.png",
     screenshots: ["1.png"],
     live: "https://elly-to-do-list.netlify.app/",
     skills: {
-      frontend: [
-        PROJECT_SKILLS.js,
-        PROJECT_SKILLS.vue,
-      ],
-     backend: [],
+      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.vue],
+      backend: [],
     },
-    get content(): JSX.Element {
+    get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-           A simple todo list made with vuejs that provide plenty of features 
+            A focused task-management application built with Vue.js and
+            JavaScript for creating, organizing, and completing everyday tasks.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          
-          
         </div>
       );
     },
@@ -310,24 +302,19 @@ const projects: Project[] = [
     screenshots: ["1.png"],
     live: "https://weathervanillajsapp.netlify.app/",
     skills: {
-      frontend: [
-        PROJECT_SKILLS.js,
-        
-      ],
+      frontend: [PROJECT_SKILLS.js],
       backend: [],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-          A simple and interactive web application for checking current weather conditions. 
-          This project is built using Vanilla JavaScript, demonstrating fundamental 
-          front-end development skills in fetching and displaying real-time weather data.
+            An interactive Vanilla JavaScript application for checking current
+            weather conditions. It fetches weather data and presents it in a
+            clear, responsive interface.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          
           <SlideShow images={[`${BASE_PATH}/WeatherApp/1.png`]} />
-          
         </div>
       );
     },
@@ -337,9 +324,7 @@ const projects: Project[] = [
     category: "Portfolio",
     title: "My Portfolio",
     src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: [".png"],
-    live: "",
-    github:"",
+    screenshots: ["landing.png", "skills.png", "navbar.png"],
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -356,18 +341,17 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            Welcome to my digital playground, where creativity meets code in the
-            dopest way possible.
+            A personal portfolio combining full-stack project work with an
+            interactive, space-themed interface.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
           <TypographyH3 className="my-4 mt-8">
-            Beautiful 3D Objects{" "}
+            Interactive 3D Skills
           </TypographyH3>
           <p className="font-mono mb-2">
-            Did you see that 3D keyboard modal? Yeah! I made that. That
-            interactive keyboard is being rendered in 3D on a webpage 🤯, and
-            pressing each keycap reveals a skill in a goofy way. It&apos;s like
-            typing, but make it art.
+            The interactive 3D keyboard is rendered directly in the browser.
+            Each key reveals information about a technology in the skills
+            section.
           </p>
           <SlideShow
             images={[
@@ -375,53 +359,16 @@ const projects: Project[] = [
               `${BASE_PATH}/portfolio/skills.png`,
             ]}
           />
-          <TypographyH3 className="my-4 ">Space Theme</TypographyH3>
+          <TypographyH3 className="my-4">Space Theme</TypographyH3>
           <p className="font-mono mb-2">
-            Dark background + floating particles = out-of-this-world cool.
+            A dark, space-inspired background and subtle particles give the site
+            its visual identity.
           </p>
           <SlideShow images={[`${BASE_PATH}/portfolio/navbar.png`]} />
-          <TypographyH3 className="my-4 mt-8">Projects</TypographyH3>
-
-          <p className="font-mono mb-2">
-            
-          </p>
-          </div>
-      );
-    },
-  },
-  {
-    id: "NexusChat",
-    category: "Web chat App",
-    title: "NexusChat",
-    src: "/assets/projects-screenshots/nexuschat/1.png",
-    screenshots: ["1.png"],
-    live: "https://nexus-chat-flame.vercel.app",
-    github:"https://github.com/EllyCarlos/NexusChat",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.next, PROJECT_SKILLS.tailwind,PROJECT_SKILLS.framerMotion],
-      backend: [PROJECT_SKILLS.supabase,PROJECT_SKILLS.postgres,PROJECT_SKILLS.prisma,PROJECT_SKILLS.node],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            NexusChat is your go-to spot for sending messages without
-            leaving a trace. Powered by Supabase, it&apos;s all about keeping things
-            low-key and secure. Whether you&apos;re sharing secrets, giving feedback,
-            or just having some fun, it ensures your identity stays
-            hidden, while your voice is heard. Say what you want, without the
-            worry.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow
-            images={[
-              `${BASE_PATH}/nexuschat/1.png`,
-                          ]}
-          />
         </div>
       );
     },
   },
-
 ];
+
 export default projects;
