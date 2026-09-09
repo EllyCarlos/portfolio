@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Archivo_Black } from "next/font/google";
 import "./globals.css";
-import ElasticCursor from "@/components/ui/ElasticCursor";
-import Particles from "@/components/Particles";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header/header";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/footer/footer";
 import Script from "next/script";
-import Preloader from "@/components/preloader";
-import EasterEggs from "@/components/easter-eggs";
 import { config } from "@/data/config";
-import SocketContextProvider from "@/contexts/socketio";
-import RemoteCursors from "@/components/realtime/remote-cursors";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -78,23 +72,12 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <Particles
-            className="fixed inset-0 -z-10 animate-fade-in"
-            quantity={100}
-          />
-          <Preloader>
-            <SocketContextProvider>
-              <RemoteCursors />
-              <TooltipProvider>
-                <Header />
-                {children}
-                <Footer />
-              </TooltipProvider>
-            </SocketContextProvider>
-            <Toaster />
-            <EasterEggs />
-            <ElasticCursor />
-          </Preloader>
+          <TooltipProvider>
+            <Header />
+            {children}
+            <Footer />
+          </TooltipProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

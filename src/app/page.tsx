@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-import SmoothScroll from "@/components/smooth-scroll";
-import { cn } from "@/lib/utils";
 import AnimatedBackground from "@/components/animated-background";
 import SkillsSection from "@/components/sections/skills";
 import ProjectsSection from "@/components/sections/projects";
@@ -12,20 +9,16 @@ import AboutSection from "@/components/sections/about";
 
 function MainPage() {
   return (
-    <>
-      <SmoothScroll>
-        <main className={cn("bg-slate-100 dark:bg-transparent")}>
-          <div className="top-0 z-0 fixed w-full h-screen">
-            <AnimatedBackground />
-          </div>
-          <HeroSection />
-          <ProjectsSection />
-          <SkillsSection />
-          <AboutSection />
-          <ContactSection />
-        </main>
-      </SmoothScroll>
-    </>
+    <main className="bg-slate-100 dark:bg-transparent">
+      <div className="top-0 z-0 fixed w-full h-screen">
+        <AnimatedBackground />
+      </div>
+      <HeroSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <AboutSection />
+      <ContactSection />
+    </main>
   );
 }
 
