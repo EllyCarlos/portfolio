@@ -2,40 +2,25 @@ import { Link } from "@/types";
 
 const links: Link[] = [
   {
-    title: 'Home',
-    href: '/',
-    thumbnail: '/assets/nav-link-previews/landing.png'
+    title: "Work",
+    href: "/#projects",
+    thumbnail: "/assets/projects-screenshots/nexuschat/1.png",
   },
   {
-    title: 'About',
-    href: '/about',
-    thumbnail: '/assets/me.jpg'
+    title: "Stack",
+    href: "/#skills",
+    thumbnail: "/assets/nav-link-previews/skills.png",
   },
   {
-    title: 'Skills',
-    href: '/#skills',
-    thumbnail: '/assets/nav-link-previews/skills.png'
+    title: "About",
+    href: "/about",
+    thumbnail: "/assets/me.jpg",
   },
   {
-    title: 'Projects',
-    href: '/#projects',
-    thumbnail: '/assets/projects-screenshots/nexuschat/1.png'
+    title: "Contact",
+    href: "/#contact",
+    thumbnail: "/assets/nav-link-previews/contact.png",
   },
-  // {
-  //   title: 'Skills',
-  //   href: '/skills',
-  //   thumbnail: '/assets/nav-link-previews/skills.png'
-  // },
-  // {
-  //   title: 'Testimonials',
-  //   href: '/testimonials',
-  //   thumbnail: '/assets/nav-link-previews/testimonials.png'
-  // },
-  {
-    title: 'Contact',
-    href: '/#contact',
-    thumbnail: '/assets/nav-link-previews/contact.png'
-  }
 ];
 
 export { links };
