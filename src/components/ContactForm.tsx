@@ -9,6 +9,8 @@ import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 
+const FALLBACK_ERROR_MESSAGE = "Something went wrong. Please try again.";
+
 const ContactForm = () => {
   const [fullName, setFullName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -21,6 +23,8 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    let errorMessage = FALLBACK_ERROR_MESSAGE;
+
     try {
       const res = await fetch("/api/send", {
         method: "POST",
@@ -33,8 +37,27 @@ const ContactForm = () => {
           message,
         }),
       });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+      const data: unknown = await res.json();
+
+      if (typeof data !== "object" || data === null) {
+        throw new Error(FALLBACK_ERROR_MESSAGE);
+      }
+
+      if (!res.ok) {
+        if (
+          "error" in data &&
+          typeof data.error === "string" &&
+          data.error.trim()
+        ) {
+          errorMessage = data.error;
+        }
+        throw new Error(errorMessage);
+      }
+
+      if (!("success" in data) || data.success !== true) {
+        throw new Error(FALLBACK_ERROR_MESSAGE);
+      }
+
       toast({
         title: "Thank you!",
         description: "I'll get back to you as soon as possible.",
@@ -49,10 +72,10 @@ const ContactForm = () => {
         router.push("/");
         clearTimeout(timer);
       }, 1000);
-    } catch (err) {
+    } catch {
       toast({
         title: "Error",
-        description: "Something went wrong! Please check the fields.",
+        description: errorMessage,
         className: cn(
           "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
         ),
@@ -71,6 +94,7 @@ const ContactForm = () => {
             placeholder="Your Name"
             type="text"
             required
+            minLength={2}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -93,6 +117,7 @@ const ContactForm = () => {
           placeholder="Tell me about about your project,"
           id="content"
           required
+          minLength={10}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />

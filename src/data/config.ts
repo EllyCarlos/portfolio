@@ -1,29 +1,29 @@
 const config = {
-  title: "Elly Carlos | Full-Stack Developer",
+  title: "Elly Carlos | Full-Stack Software Engineer",
   description: {
-    long: "Explore the portfolio of Elly, a full-stack developer and creative technologist specializing in interactive web experiences, and innovative projects. Discover my latest work. Let's build something amazing together!",
+    long: "Portfolio of Elly Carlos, a full-stack software engineer building modern web applications, real-time products, and backend APIs with TypeScript, React, Next.js, and Node.js.",
     short:
-      "Discover the portfolio of Elly, a full-stack developer creating interactive web experiences and innovative projects.",
+      "Full-stack software engineer building modern web applications and backend APIs with TypeScript, React, Next.js, and Node.js.",
   },
   keywords: [
-    "Elly",
+    "Elly Carlos",
     "portfolio",
-    "full-stack developer",
-    "creative technologist",
+    "full-stack software engineer",
+    "TypeScript",
+    "JavaScript",
     "web development",
-    "3D animations",
-    "interactive websites",
-    "NexusChat",
-    "web design",
-    "GSAP",
     "React",
     "Next.js",
-    "Spline",
-    "Framer Motion",
+    "Node.js",
+    "NestJS",
+    "PostgreSQL",
+    "REST APIs",
+    "real-time applications",
+    "NexusChat",
   ],
   author: "Elly Carlos",
   email: "ellycarlos97@gmail.com",
-  site: "ellycarlos.vercel.app",
+  site: "https://ellycarlos.vercel.app",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
@@ -33,7 +33,7 @@ const config = {
     linkedin: "https://www.linkedin.com/in/elly-carlos",
     instagram: "https://www.instagram.com/elly_carlos",
     facebook: "",
-    github: "https://www.github.com/EllyCarlos",
+    github: "https://github.com/EllyCarlos",
   },
 };
 export { config };

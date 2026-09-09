@@ -2,7 +2,7 @@
 
 # ✦ Elly Carlos — Portfolio
 
-**Full-Stack Developer · Nairobi, Kenya**
+**Full-Stack Software Engineer · Nairobi, Kenya**
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-ellycarlos.vercel.app-1A56A0?style=for-the-badge&logo=vercel&logoColor=white)](https://ellycarlos.vercel.app)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
@@ -51,9 +51,9 @@ A personal portfolio website featuring custom 3D animations, immersive scroll in
 ## ✦ Projects Showcased
 
 ### NexusChat — Real-Time Messaging Platform
-> Next.js · Node.js · TypeScript · Socket.IO · Prisma · Firebase
+> Next.js · TypeScript · Node.js · Express · Socket.IO · PostgreSQL · Prisma
 
-A full-featured messaging app with one-on-one and group chat, voice notes, file sharing, and calling capabilities.
+A full-stack messaging application with private and group conversations, media sharing, voice notes, calls, authentication, account recovery, and real-time communication.
 
 ---
 
