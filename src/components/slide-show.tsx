@@ -60,9 +60,11 @@ const SlideShow = ({ images }: { images: string[] }) => {
                   )}
                 </AnimatePresence>
               </DialogTrigger>
-              <DialogContent className="min-w-[90vw] h-[90vh] bg-transparent outline-none border-none p-0 m-0">
+              <DialogContent className="m-0 flex h-[90svh] w-[calc(100vw-2rem)] max-w-6xl flex-col border-none bg-transparent p-0 outline-none">
                 <DialogHeader className="w-full">
-                  {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}
+                  <DialogTitle className="sr-only">
+                    Project screenshots
+                  </DialogTitle>
                   <DialogDescription>
                     {image.split("/").pop()}
                   </DialogDescription>
@@ -72,8 +74,7 @@ const SlideShow = ({ images }: { images: string[] }) => {
                   alt="screenshot"
                   width={1000}
                   height={1000}
-                  className="w-full"
-                  style={{ objectFit: "contain", width: "100vw" }}
+                  className="min-h-0 w-full flex-1 object-contain"
                 />
               </DialogContent>
             </Dialog>

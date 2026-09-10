@@ -9,7 +9,11 @@ import AboutSection from "@/components/sections/about";
 
 function MainPage() {
   return (
-    <main className="bg-slate-100 dark:bg-transparent">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="bg-slate-100 dark:bg-transparent"
+    >
       <div className="top-0 z-0 fixed w-full h-screen">
         <AnimatedBackground />
       </div>

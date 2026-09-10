@@ -99,7 +99,7 @@ const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="rounded-sm font-display text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:text-base"
+          className="inline-flex min-h-11 items-center rounded-sm font-display text-sm tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:text-base"
         >
           {config.author}
         </Link>
@@ -112,7 +112,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 items-center rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               {link.title}
             </Link>
@@ -124,7 +124,7 @@ const Header = () => {
           {contactLink && (
             <Link
               href={contactLink.href}
-              className="hidden h-9 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-neutral-950 transition-colors duration-200 hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:inline-flex"
+              className="hidden min-h-11 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-neutral-950 transition-colors duration-200 hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:inline-flex"
             >
               {contactLink.title}
             </Link>

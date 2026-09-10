@@ -87,8 +87,8 @@ const TechnologyList = ({
 );
 
 const FeaturedProject = ({ project }: { project: Project }) => (
-  <article className="grid overflow-hidden rounded-2xl border border-border bg-card/95 shadow-xl shadow-black/5 dark:shadow-black/20 lg:grid-cols-[1.15fr_0.85fr]">
-    <div className="flex items-center bg-black p-2 sm:p-3 lg:p-4">
+  <article className="grid min-w-0 overflow-hidden rounded-2xl border border-border bg-card/95 shadow-xl shadow-black/5 dark:shadow-black/20 lg:grid-cols-[1.15fr_0.85fr]">
+    <div className="flex min-w-0 items-center bg-black p-2 sm:p-3 lg:p-4">
       <Image
         src={project.src}
         alt={getProjectImageAlt(project)}
@@ -99,7 +99,7 @@ const FeaturedProject = ({ project }: { project: Project }) => (
       />
     </div>
 
-    <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+    <div className="flex min-w-0 flex-col justify-center p-6 sm:p-8 lg:p-10">
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
         Featured project · {project.category}
       </p>

@@ -73,6 +73,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
+            <a
+              href="#main-content"
+              className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-md bg-background px-4 py-3 text-sm font-semibold text-foreground shadow-lg transition-transform focus:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Skip to main content
+            </a>
             <Header />
             {children}
             <Footer />
